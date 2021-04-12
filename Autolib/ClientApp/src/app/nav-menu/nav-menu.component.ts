@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavbarService } from '../services/navbar.service';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-nav-menu',
@@ -17,6 +18,15 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  public NavMenuComponent(_navbar: NavbarService) {
+  
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
+    this.matIconRegistry.addSvgIcon(
+      "autolib",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/Autolib_logo.svg")
+    );
   }
+  
 }

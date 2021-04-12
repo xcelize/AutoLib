@@ -1,3 +1,7 @@
+navbar {
+    background-color: black;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -5,11 +9,11 @@ a.navbar-brand {
 }
 
 html {
-  font-size: 14px;
+  font-size: 17px;
 }
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
