@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatFormField, MatIconModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material'; 
+import { MatFormFieldModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
