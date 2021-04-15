@@ -1,0 +1,135 @@
+{ "stations" : [
+    {
+      "id": 1,
+      "latitude": 45.745013,
+      "longitude": 4.871353,
+      "adresse": "Place Ambroise Courtois",
+      "numero": 18,
+      "ville": "LYON",
+      "code_postal": 69003,
+      "bornes": [
+        {
+          "id": 1,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 1,
+            "rfid": 1234567891,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.745013,
+            "longitude": 4.871353,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 2,
+            "rfid": 1234567892,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.745013,
+            "longitude": 4.871353,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            }
+          }
+        },
+        {
+          "id": 3,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 4,
+          "etatBorne": 1,
+          "vehicule": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "latitude": 45.756529,
+      "longitude": 4.835870,
+      "adresse": "Place Antonin Poncet",
+      "numero": 1,
+      "ville": "LYON",
+      "code_postal": 69002,
+      "bornes": [
+        {
+          "id": 5,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 3,
+            "rfid": 1234567893,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.756529,
+            "longitude": 4.835870,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            }
+          }
+        },
+        {
+          "id": 6,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 4,
+            "rfid": 1234567894,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.756529,
+            "longitude": 4.835870,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            }
+          }
+        },
+        {
+          "id": 7,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 5,
+            "rfid": 1234567895,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.756529,
+            "longitude": 4.835870,
+            "typeVehicule": {
+              "id": 3,
+              "categorie": "Utilitaire",
+              "type_vehicule": "Citroën Berlingo"
+            }
+          }
+        },
+        {
+          "id": 8,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 9,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 10,
+          "etatBorne": 1,
+          "vehicule": null
+        }
+      ]
+    }
+  ]
+}

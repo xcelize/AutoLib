@@ -8,4 +8,9 @@ export class Vehicule {
   latitude: number;
   longitude: number;
   typeVehicule: TypeVehicule;
+
+  public isUsed(used: boolean): void {
+    if (used) this.disponibilite = 'OCCUPE'
+    else this.disponibilite = 'LIBRE';
+  }
 }

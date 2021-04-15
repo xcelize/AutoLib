@@ -1,3 +1,5 @@
+import { Borne } from "./borne";
+
 export class Station {
   idStation: number;
   latitude: number;
@@ -6,4 +8,26 @@ export class Station {
   numero_rue: number;
   ville: string;
   code_postale: number;
+  bornes: Borne[];
+
+  public totalBornes(): number {
+    return this.bornes.length;
+  }
+
+  public totalBornesDispo(): number {
+    let dispo = 0;
+    for (let borne of this.bornes) {
+      if (borne.etatBorne == 1) dispo++;
+    }
+    return dispo;
+  }
+
+  public getBornesDispo(): Borne[] {
+    let bornesDispo: Borne[];
+    for (let borne of this.bornes) {
+      if (borne.etatBorne == 1) bornesDispo.push(borne);
+    }
+    return bornesDispo;
+  }
 }
+
