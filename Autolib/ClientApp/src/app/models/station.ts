@@ -5,9 +5,9 @@ export class Station {
   latitude: number;
   longitude: number;
   adresse: string;
-  numero_rue: number;
+  numero: number;
   ville: string;
-  code_postale: number;
+  code_postal: number;
   bornes: Borne[];
 
   public totalBornes(): number {
@@ -28,6 +28,12 @@ export class Station {
       if (borne.etatBorne == 1) bornesDispo.push(borne);
     }
     return bornesDispo;
+  }
+
+  public getAdresse(): string {
+    return this.numero.toString() + " " +
+           this.adresse + ", " +
+           this.code_postal.toString() + " " + this.ville; 
   }
 }
 

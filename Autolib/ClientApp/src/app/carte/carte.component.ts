@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Station } from '../models/station';
 import { MockStationServiceService } from '../services/mock-station-service.service';
+import * as L from 'leaflet';
+import { MatDialog } from '@angular/material';
+import { DialogueComponent } from '../dialogue/dialogue.component';
 
-declare var ol: any;
 
 @Component({
   selector: 'app-carte',
@@ -19,23 +21,26 @@ export class CarteComponent implements OnInit {
   lat_lyon: number = 45.764043;
   long_lyon: number = 4.835659;
 
-  constructor(
-    private _mockStationService: MockStationServiceService
-  ) {
-  }
+  mymap: L.Map;
 
-  map: any;
+
+  constructor(
+    private _mockStationService: MockStationServiceService,
+    public dialogue: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getStations();
-    this.loadMap();
+    this.leafletMap();
+
   }
 
   getStations(): void {
     this.loading = true;
     this._mockStationService.getAllStations().subscribe(
       (data) => {
-        console.log('stations received')
+        console.log('stations received');
+        this.addSiteOnMap(data);
         this.stations = data;
       },
       (error) => {
@@ -51,44 +56,40 @@ export class CarteComponent implements OnInit {
   }
 
 
-  loadMap(): void {
-    this.map = new ol.Map(
-      {
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([this.long_lyon, this.lat_lyon]),
-          zoom: 12
-        })
-      }
-    );
-
-    for (let station of this.stations) {
-      this.addPoint(station.latitude, station.longitude);
-    }
-    
+  leafletMap() {
+    this.mymap = L.map("mapid").setView([this.lat_lyon, this.long_lyon], 13);
+    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(this.mymap);
   }
 
-  addPoint(lat: number, long: number) {
-    var vectorLayer = new ol.layer.Vector({
-      source: new ol.source.Vector({
-        features: [new ol.Feature({
-          geometry: new ol.geom.Point(ol.proj.fromLonLat([long, lat])),
-        })]
-      }),
-      style: new ol.style.Style({
-        image: new ol.style.Icon({
-          anchor: [0.5, 0.5],
-          anchorXUnits: "fraction",
-          anchorYUnits: "fraction",
-          src: "../../assets/images/localisation_station.png"
-        })
-      })
+  addSiteOnMap(stations: Station[]): void {
+    
+    console.log(stations);
+    stations.forEach(station => {
+      var myIcon =
+        L.icon({
+          iconUrl: "./../assets/images/localisation_station.png",
+          iconSize: [40, 40],
+          iconAnchor: [13, 0]
+        });
+
+      const marker =
+        L.marker(
+          [station.latitude, station.longitude],
+          { icon: myIcon }
+        )
+        .addTo(this.mymap)
+          .on('click', () => {
+            this.openDialog(station)
+        });
     });
-    this.map.addLayer(vectorLayer);
+  }
+
+  openDialog(station: Station): void {
+    this.dialogue.open(DialogueComponent, {
+      data: station
+    });
   }
 }

@@ -1,0 +1,15 @@
+<h2>Station N° {{ data.id }} </h2>
+<h5><mat-icon>location_on</mat-icon>{{ getAdresse() }}.<br />
+--------------</h5>
+<div class="info-bornes">
+  <p>Total bornes: <b>{{ totalBornes() }}</b>.</p>
+  <p style="color: rgb(51, 174, 103)">Disponibles : <b>{{  totalBornesDispo() }}</b>.</p>
+</div>
+<div class="draw-bornes"
+     *ngFor="let borne of data.bornes"
+     >
+  <div class="circle"
+        [ngStyle]="{'background-color': getColor(borne.etatBorne)}">
+  {{ borne.id }}
+  </div>  
+</div>

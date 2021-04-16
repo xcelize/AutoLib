@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { MatFormField, MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -20,6 +22,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { CompteComponent } from './compte/compte.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProximiteComponent } from './proximite/proximite.component';
+import { DialogueComponent } from './dialogue/dialogue.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ProximiteComponent } from './proximite/proximite.component';
     ReservationComponent,
     CompteComponent,
     FooterComponent,
-    ProximiteComponent
+    ProximiteComponent,
+    DialogueComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -51,8 +55,12 @@ import { ProximiteComponent } from './proximite/proximite.component';
     MatButtonModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogueComponent],
+  
 })
 export class AppModule { }

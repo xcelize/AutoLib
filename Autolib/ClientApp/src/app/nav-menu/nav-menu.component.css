@@ -2,8 +2,20 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+
 }
 
+a {
+  font-size: 13px !important;
+}
+
+nav {
+    height: 60px;
+}
+
+mat-button {
+    width: 10px;
+}
 
 ul {
     display: flex;
@@ -13,25 +25,46 @@ ul {
 }
 
 li {
-    margin: 0 10px 0 10px;
+    margin: 0 5px 0 5px;
 }
 
 input {
     width: 95%;
+    font-size: 13px;
 }
 
 .logo {
-    width: 60px;
+    width: 57px;
 }
 
 html {
   font-size: 16px;
 }
 
+mat-form-field , mat-label {
+  color: rgb(0, 148, 255);
+  font-size: 11px;
+}
+
+mat-form-field {
+    margin-top: 15px;
+}
+
+
 
 @media (min-width: 1000px){
   html {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  mat-form-field {
+    margin-top: 2px;
+  }
+
+  nav {
+      height: unset;
   }
 }
 

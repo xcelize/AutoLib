@@ -1,0 +1,28 @@
+h2, h5{
+  text-align: center;
+}
+
+h2 {
+    color: rgb(0, 38, 255)
+}
+
+h5 {
+  color: rgb(0, 148, 255);
+}
+
+.info-bornes, .draw-bornes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  font-size: 15px;
+  border: #000 1px solid;
+  text-align: center;
+}
+
