@@ -8,7 +8,8 @@ import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
-import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -47,8 +48,8 @@ import { DialogueComponent } from './dialogue/dialogue.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'inscription', component: InscriptionComponent },
       { path: 'proximite', component: ProximiteComponent },
-      { path: 'compte:\id', component: CompteComponent },
-      { path: 'reservation', component: ReservationComponent }
+      { path: 'compte:/id', component: CompteComponent },
+      { path: 'reservation/stations/:id', component: ReservationComponent }
     ]),
     BrowserAnimationsModule,
     MatIconModule,
@@ -56,7 +57,8 @@ import { DialogueComponent } from './dialogue/dialogue.component';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

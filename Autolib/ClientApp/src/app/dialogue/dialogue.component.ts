@@ -1,7 +1,8 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Station } from '../models/station';
+import { MockStationServiceService } from '../services/mock-station-service.service';
+
 
 @Component({
   selector: 'app-dialogue',
@@ -10,12 +11,15 @@ import { Station } from '../models/station';
 })
 export class DialogueComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Station) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data,
+    private _mockStationService: MockStationServiceService
+  ) { }
 
   ngOnInit() {
   }
 
-  public totalBornes(): number {
+  public totalBornes(): number { 
     return this.data.bornes.length;
   }
 
@@ -33,9 +37,21 @@ export class DialogueComponent implements OnInit {
       this.data.code_postal.toString() + " " + this.data.ville;
   }
 
-  public getColor(etatBorne: number): string {
+  public getBackgroundColor(etatBorne: number): string {
     let color = 'rgb(220,220,220)';
     if (etatBorne == 0) color = "rgb(51, 174, 103)";
     return color;
+  }
+
+  public getColor(etatBorne: number): string {
+    let color = 'black';
+    if (etatBorne == 0) color = 'white';
+    return color;
+  }
+
+  sendData(): void {
+    this._mockStationService.getStation(this.data.id).subscribe(
+      (data) => { console.log(data); }
+    )
   }
 }

@@ -5,11 +5,19 @@
   <p>Total bornes: <b>{{ totalBornes() }}</b>.</p>
   <p style="color: rgb(51, 174, 103)">Disponibles : <b>{{  totalBornesDispo() }}</b>.</p>
 </div>
-<div class="draw-bornes"
-     *ngFor="let borne of data.bornes"
-     >
-  <div class="circle"
-        [ngStyle]="{'background-color': getColor(borne.etatBorne)}">
+<ul> 
+  <li class="circle" *ngFor="let borne of data.bornes"
+      [ngStyle]="{
+       'color': getColor(borne.etatBorne),
+       'background-color': getBackgroundColor(borne.etatBorne)
+      }">
   {{ borne.id }}
-  </div>  
+  </li>  
+</ul>
+<div class="btn-reserver">
+  <a mat-raised-button matDialogClose
+     class="btn-with-hover"
+     [routerLink]="['/reservation/stations', data.id]"  [routerLinkActive]="['link-active']">
+  Réserver
+  </a>
 </div>

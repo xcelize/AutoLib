@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+}
+
+img {
+    width: 50%;
+}
+
+.nom-et-img {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-column-vehicule {
+    width: 20%;
+}
+
+@media (max-width: 750px) {
+  .mat-cell {
+    font-size: 10px;
+  }
+}
+
