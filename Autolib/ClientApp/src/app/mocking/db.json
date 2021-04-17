@@ -130,6 +130,43 @@
           "vehicule": null
         }
       ]
+    },
+    {
+      "id": 3,
+      "latitude": 45.736646,
+      "longitude": 4.869195,
+      "adresse": "Place du 11 Novembre 1918",
+      "numero": 1,
+      "ville": "LYON",
+      "code_postal": 69008,
+      "bornes": [
+        {
+          "id": 11,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 12,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 13,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 14,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 15,
+          "etatBorne": 1,
+          "vehicule": null
+        }
+        
+      ]
     }
   ]
 }

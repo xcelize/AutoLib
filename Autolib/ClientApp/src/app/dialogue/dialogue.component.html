@@ -8,16 +8,19 @@
 <ul> 
   <li class="circle" *ngFor="let borne of data.bornes"
       [ngStyle]="{
-       'color': getColor(borne.etatBorne),
-       'background-color': getBackgroundColor(borne.etatBorne)
+       'color': getColor(borne.vehicule),
+       'background-color': getBackgroundColor(borne.vehicule)
       }">
   {{ borne.id }}
   </li>  
 </ul>
-<div class="btn-reserver">
+<div class="btn-reserver" *ngIf="showBtnReserver">
   <a mat-raised-button matDialogClose
      class="btn-with-hover"
      [routerLink]="['/reservation/stations', data.id]"  [routerLinkActive]="['link-active']">
   Réserver
   </a>
+</div>
+<div *ngIf="showInfo">
+  Oups ! Cette station est vide, merci d'y revenir plus tard ! 
 </div>
