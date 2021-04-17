@@ -2,13 +2,24 @@ table {
     width: 100%;
 }
 
+.mat-cell, .mat-header-cell {
+    text-align: center;
+    justify-content: center;
+}
+
+.mat-cell {
+  height: 100px;
+}
+
 img {
     width: 50%;
+    margin-bottom: 5px;
 }
 
 .nom-et-img {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .mat-column-vehicule {
@@ -18,6 +29,7 @@ img {
 @media (max-width: 750px) {
   .mat-cell {
     font-size: 10px;
+    height: 60px;
   }
 }
 
