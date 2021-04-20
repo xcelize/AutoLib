@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { ConfirmReservationComponent } from '../confirm-reservation/confirm-reservation.component';
 import { Borne } from '../models/borne';
 import { Station } from '../models/station';
+import { Vehicule } from '../models/vehicule';
+import { BoutonsService } from '../services/boutons.service';
+import { ImageService } from '../services/image.service';
 import { MockStationServiceService } from '../services/mock-station-service.service';
 
 @Component({
@@ -13,15 +18,21 @@ export class ReservationComponent implements OnInit {
 
   bornesDispo: Borne[];
   colonnes: string[] = ['borne', 'vehicule', 'categorie', 'batterie', 'dispo', 'reserver'];
+  idStation: number;
+  _resa: boolean = false;
 
   constructor(
     private _mockStationService: MockStationServiceService,
-    private _route: ActivatedRoute
-  ) { }
+    private _route: ActivatedRoute,
+    private _dialogue: MatDialog,
+    private _imageService: ImageService,
+    private _boutonsService: BoutonsService
+  ) {
+  }
 
   ngOnInit() {
-    const id = this._route.snapshot.paramMap.get('id');
-    this._mockStationService.getStation(+id).subscribe(
+    this.idStation = +this._route.snapshot.paramMap.get('id');
+    this._mockStationService.getStation(this.idStation).subscribe(
       station => {
         this.bornesDispo = this.getBornesDispo(station);
         console.log(this.bornesDispo);
@@ -32,25 +43,22 @@ export class ReservationComponent implements OnInit {
   getBornesDispo(station: Station): Borne[] {
     let bornes: Borne[]=[];
     for (let borne of station.bornes) {
-      if (borne.etatBorne == 0) bornes.push(borne);
+      if (borne.etatBorne == 0) {
+        if (borne.vehicule.disponibilite == 'LIBRE') bornes.push(borne);
+      }
     }
     return bornes;
   }
 
-  getImgVehicule(nomVehicule: string): string {
-    let source: string = "";
-    switch (nomVehicule) {
-      case "Citroën C1": source = "../../assets/images/citroenC1.jpg"; break;
-      case "Toyota Aygo": source = "../../assets/images/toyotaAygo.png"; break;
-      case "Citroën Berlingo": source = "../../assets/images/citroenBerlingo.jpg"; break;
-      case "Citroën Berlingo PRM": source = "../../assets/images/citroenBerlingoPRM.jpg"; break;
-      case "Nissan Evalia": source = "../../assets/images/nissan.png"; break;
-      case "C4 Picasso": source = "../../assets/images/c4Picasso.jpg"; break;
-      case "Toyota Verso": source = "../../assets/images/toyotaVerso.JPG"; break;
-      case "Toyota Yaris": source = "../../assets/images/toyotaYaris.png"; break;
-      default: source = ""; break; 
-    }
-    return source;
+  openDialogueConfirmation(borne: Borne): void {
+    this._dialogue.open(ConfirmReservationComponent,
+      {
+        data: {
+          borne: borne,
+          idStation: this.idStation,
+        },
+        disableClose: true
+      }
+    )
   }
-
 }

@@ -1,7 +1,7 @@
 import { Borne } from "./borne";
 
 export class Station {
-  idStation: number;
+  id: number;
   latitude: number;
   longitude: number;
   adresse: string;

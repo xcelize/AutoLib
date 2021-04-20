@@ -1,4 +1,5 @@
-{ "stations" : [
+{
+  "stations": [
     {
       "id": 1,
       "latitude": 45.745013,
@@ -57,7 +58,7 @@
     {
       "id": 2,
       "latitude": 45.756529,
-      "longitude": 4.835870,
+      "longitude": 4.83587,
       "adresse": "Place Antonin Poncet",
       "numero": 1,
       "ville": "LYON",
@@ -72,7 +73,7 @@
             "etatBatterie": 100,
             "disponibilite": "LIBRE",
             "latitude": 45.756529,
-            "longitude": 4.835870,
+            "longitude": 4.83587,
             "typeVehicule": {
               "id": 2,
               "categorie": "Petite citadine",
@@ -89,7 +90,7 @@
             "etatBatterie": 100,
             "disponibilite": "LIBRE",
             "latitude": 45.756529,
-            "longitude": 4.835870,
+            "longitude": 4.83587,
             "typeVehicule": {
               "id": 2,
               "categorie": "Petite citadine",
@@ -106,7 +107,7 @@
             "etatBatterie": 100,
             "disponibilite": "LIBRE",
             "latitude": 45.756529,
-            "longitude": 4.835870,
+            "longitude": 4.83587,
             "typeVehicule": {
               "id": 3,
               "categorie": "Utilitaire",
@@ -165,7 +166,6 @@
           "etatBorne": 1,
           "vehicule": null
         }
-        
       ]
     }
   ]

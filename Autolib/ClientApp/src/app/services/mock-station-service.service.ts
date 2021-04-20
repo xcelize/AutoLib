@@ -23,5 +23,9 @@ export class MockStationServiceService {
   getStation(id: number): Observable<Station> {
     return this._http.get<Station>(this.mock_api_stations + "/" + id);
   }
+
+  updateStation(station: Station): Observable<Station>{
+    return this._http.put<Station>(this.mock_api_stations + "/" + station.id, station);
+  }
  
 }

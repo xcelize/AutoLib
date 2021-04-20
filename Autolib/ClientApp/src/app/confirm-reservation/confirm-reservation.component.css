@@ -1,0 +1,33 @@
+h4 {
+    text-align: center;
+}
+
+img {
+    width: 40%;
+}
+
+span {
+    color: rgb(0, 148, 255);
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nom-et-borne {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 120%;
+    margin-top: 15px;
+}
+

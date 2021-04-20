@@ -3,6 +3,7 @@
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
+  text-decoration: none;
 }
 
 code {
@@ -33,3 +34,7 @@ body {
   color: white !important;
 }
 
+.btn-annuler-with-hover:hover {
+  background-color: red !important;
+  color: white !important;
+}

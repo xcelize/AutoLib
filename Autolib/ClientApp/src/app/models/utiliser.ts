@@ -3,7 +3,7 @@ import { Client } from "./client";
 import { Vehicule } from "./vehicule";
 
 export class Utiliser {
-  idService: number;
+  id: number;
   vehicule: Vehicule;
   client: Client;
   date: Date;

@@ -31,30 +31,32 @@ export class DialogueComponent implements OnInit {
   public totalBornesDispo(): number {
     let dispo = 0;
     for (let borne of this.data.bornes) {
-      if (borne.etatBorne == 0) dispo++;
+      if (borne.etatBorne == 0) {
+        if (borne.vehicule.disponibilite == 'LIBRE') dispo++;
+      }
     }
     return dispo;
   }
+
+  public totalBornesReservees(): number {
+    let reserve = 0;
+    for (let borne of this.data.bornes) {
+      if (borne.etatBorne == 0) {
+        if (borne.vehicule.disponibilite != 'LIBRE') reserve++;
+      }
+    }
+    return reserve;
+  }
+
+  public totalBornesVides(): number {
+    return this.totalBornes() - this.totalBornesDispo() - this.totalBornesReservees();
+  } 
 
   public getAdresse(): string {
     return this.data.numero.toString() + " " +
       this.data.adresse + ", " +
       this.data.code_postal.toString() + " " + this.data.ville;
   }
-  /*
-  public getBackgroundColor(etatBorne: number): string {
-    let color = 'rgb(220,220,220)';
-
-    if (etatBorne == 0) {
-      if (dispoVehicule == 'LIBRE') {
-        color = "rgb(51, 174, 103)";
-      }
-      else {
-        color = "rgb(0, 148, 255)";
-      }
-    }
-    return color;
-  }*/
 
   public getBackgroundColor(vehicule: Vehicule): string {
     let color = 'rgb(220,220,220)';
@@ -64,12 +66,6 @@ export class DialogueComponent implements OnInit {
     }
     return color;
   }
-  /*
-  public getColor(etatBorne: number): string {
-    let color = 'black';
-    if (etatBorne == 0) color = 'white';
-    return color;
-  }*/
 
   public getColor(vehicule: Vehicule): string {
     let color = 'black';

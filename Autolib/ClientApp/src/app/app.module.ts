@@ -24,6 +24,8 @@ import { CompteComponent } from './compte/compte.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProximiteComponent } from './proximite/proximite.component';
 import { DialogueComponent } from './dialogue/dialogue.component';
+import { ConfirmReservationComponent } from './confirm-reservation/confirm-reservation.component';
+import { DialogResaOkComponent } from './dialog-resa-ok/dialog-resa-ok.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { DialogueComponent } from './dialogue/dialogue.component';
     CompteComponent,
     FooterComponent,
     ProximiteComponent,
-    DialogueComponent
+    DialogueComponent,
+    ConfirmReservationComponent,
+    DialogResaOkComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -62,7 +66,11 @@ import { DialogueComponent } from './dialogue/dialogue.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DialogueComponent],
+  entryComponents: [
+    DialogueComponent,
+    ConfirmReservationComponent,
+    DialogResaOkComponent
+  ],
   
 })
 export class AppModule { }

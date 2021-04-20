@@ -1,7 +1,7 @@
 import { TypeVehicule } from "./type-vehicule";
 
 export class Vehicule {
-  idVehicule: number;
+  id: number;
   rfid: number;
   etatBatterie: number;
   disponibilite: string;

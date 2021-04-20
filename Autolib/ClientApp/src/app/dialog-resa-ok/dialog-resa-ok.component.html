@@ -1,0 +1,13 @@
+<h4>Merci et bon voyage !</h4>
+<mat-dialog-content>
+  <p>
+    Votre réservation a été confirmée à {{ data.time }} le {{ data.date }} !<br />
+    A l'arrivée, merci de fournir votre login et mot de passe pour pouvoir utiliser la voiture.<br />
+    <b>IMPORTANT !</b> Votre réservation sera validée jusqu'à <b>{{ data.expirationTime }} le {{ data.expirationDate }}</b>. Après cette date, elle sera automatiquement annulée.
+    <br /><br />
+    Equipe Autolib'.
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <a mat-raised-button mat-dialog-close class="btn-with-hover">OK</a>
+</mat-dialog-actions>

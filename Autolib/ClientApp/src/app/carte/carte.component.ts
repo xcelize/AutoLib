@@ -14,7 +14,6 @@ import { DialogueComponent } from '../dialogue/dialogue.component';
 })
 export class CarteComponent implements OnInit {
 
-  stations: Station[] = [];
   loading: boolean = false;
   errorMessage: string = "";
   // coordonnées de Lyon
@@ -41,7 +40,7 @@ export class CarteComponent implements OnInit {
       (data) => {
         console.log('stations received');
         this.addSiteOnMap(data);
-        this.stations = data;
+        console.log(data);
       },
       (error) => {
         console.error('request failed with error')
@@ -65,8 +64,6 @@ export class CarteComponent implements OnInit {
   }
 
   addSiteOnMap(stations: Station[]): void {
-    
-    console.log(stations);
     stations.forEach(station => {
       var myIcon =
         L.icon({

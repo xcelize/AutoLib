@@ -1,9 +1,13 @@
 <h2>Station N° {{ data.id }} </h2>
-<h5><mat-icon>location_on</mat-icon>{{ getAdresse() }}.<br />
---------------</h5>
-<div class="info-bornes">
-  <p>Total bornes: <b>{{ totalBornes() }}</b>.</p>
-  <p style="color: rgb(51, 174, 103)">Disponibles : <b>{{  totalBornesDispo() }}</b>.</p>
+<h5><mat-icon>location_on</mat-icon>{{ getAdresse() }}.</h5>
+<p id="total">
+  Total bornes: <b>{{ totalBornes() }}.</b><br />
+  <span class="barre">--------------------</span>
+</p>
+<div class="statuts">
+    <p id ="dispo">Disponibles : <b>{{  totalBornesDispo() }}</b>.</p>
+    <p id="reserve">Réservées à la location: <b>{{ totalBornesReservees() }}</b>.</p>
+    <p id="vide">Vides: <b>{{ totalBornesVides() }}</b>.</p>
 </div>
 <ul> 
   <li class="circle" *ngFor="let borne of data.bornes"
@@ -21,6 +25,6 @@
   Réserver
   </a>
 </div>
-<div *ngIf="showInfo">
-  Oups ! Cette station est vide, merci d'y revenir plus tard ! 
+<div *ngIf="showInfo" class="info-non-dispo">
+  Oups ! Pas de voitures disponibles pour l'instant, merci d'y revenir plus tard ! 
 </div>

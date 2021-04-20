@@ -1,5 +1,5 @@
 export class TypeVehicule {
-  idTypeVehicule: number;
+  id: number;
   categorie: string;
   typeVehicule: string;
 }
