@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Station } from '../models/station';
 import { MockStationServiceService } from '../services/mock-station-service.service';
 import * as L from 'leaflet';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogueComponent } from '../dialogue/dialogue.component';
 
 

@@ -1,1 +1,55 @@
-<p>inscription works!</p>
+<h2 class="titre"> Merci de saisir votre information</h2>
+<form>
+  <div class="ins" id="nom-prenom-datenaiss">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput autocomplete="off" required />
+      <mat-hint>En majuscule</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput autocomplete="off"  required/>
+      <mat-hint>En majuscule</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput [matDatepicker]="datepicker" required>
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+      </mat-datepicker>
+    </mat-form-field>
+
+  </div>
+
+  <div class="ins" id="compte">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Identifiant</mat-label>
+      <input matInput autocomplete="off" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput required [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+         <mat-label>Confirmation de mot de passe</mat-label>
+         <input matInput required [type]="hide ? 'password' : 'text'">
+         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+     </mat-form-field>
+  </div>
+
+  <div class="valider">
+    <button mat-raised-button class="btn-with-hover">Valider</button>
+  </div>
+</form>

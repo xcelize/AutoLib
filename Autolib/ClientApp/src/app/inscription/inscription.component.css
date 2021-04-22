@@ -1,0 +1,39 @@
+.ins, .valider {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.ins {
+  height: 17vh;
+
+}
+
+.valider {
+    height: 10vh;
+    padding-bottom: 25px;
+}
+
+:host ::ng-deep mat-form-field.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    height: 80px;
+    min-width: 300px;
+}
+
+input {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+@media (max-width: 1000px) {
+    .ins {
+        flex-direction: column;
+        justify-content: center;
+        height: unset;
+    }
+
+  :host ::ng-deep mat-form-field.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    min-width: 450px;
+    margin-bottom: 20px;
+  }
+
+}
