@@ -31,6 +31,10 @@ input {
         height: unset;
     }
 
+    h2 {
+        text-align: center;
+    }
+
   :host ::ng-deep mat-form-field.mat-form-field-appearance-outline .mat-form-field-wrapper {
     min-width: 450px;
     margin-bottom: 20px;
