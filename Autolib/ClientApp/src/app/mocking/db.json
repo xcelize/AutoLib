@@ -1,0 +1,193 @@
+{
+  "stations": [
+    {
+      "id": 1,
+      "latitude": 45.745013,
+      "longitude": 4.871353,
+      "adresse": "Place Ambroise Courtois",
+      "numero": 18,
+      "ville": "LYON",
+      "code_postal": 69003,
+      "bornes": [
+        {
+          "id": 1,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 1,
+            "rfid": 1234567891,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.745013,
+            "longitude": 4.871353,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            },
+            "reservations": [],
+            "utilisations": []
+          }
+        },
+        {
+          "id": 2,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 2,
+            "rfid": 1234567892,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.745013,
+            "longitude": 4.871353,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            },
+            "reservations": [],
+            "utilisations": []
+          }
+        },
+        {
+          "id": 3,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 4,
+          "etatBorne": 1,
+          "vehicule": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "latitude": 45.756529,
+      "longitude": 4.83587,
+      "adresse": "Place Antonin Poncet",
+      "numero": 1,
+      "ville": "LYON",
+      "code_postal": 69002,
+      "bornes": [
+        {
+          "id": 5,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 3,
+            "rfid": 1234567893,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.756529,
+            "longitude": 4.83587,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            },
+            "reservations": [],
+            "utilisations": []
+          }
+        },
+        {
+          "id": 6,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 4,
+            "rfid": 1234567894,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.756529,
+            "longitude": 4.83587,
+            "typeVehicule": {
+              "id": 2,
+              "categorie": "Petite citadine",
+              "type_vehicule": "Toyota Aygo"
+            },
+            "reservations": [],
+            "utilisations": []
+          }
+        },
+        {
+          "id": 7,
+          "etatBorne": 0,
+          "vehicule": {
+            "idVehicule": 5,
+            "rfid": 1234567895,
+            "etatBatterie": 100,
+            "disponibilite": "LIBRE",
+            "latitude": 45.756529,
+            "longitude": 4.83587,
+            "typeVehicule": {
+              "id": 3,
+              "categorie": "Utilitaire",
+              "type_vehicule": "Citroën Berlingo"
+            },
+            "reservations": [],
+            "utilisations": []
+          }
+        },
+        {
+          "id": 8,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 9,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 10,
+          "etatBorne": 1,
+          "vehicule": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "latitude": 45.736646,
+      "longitude": 4.869195,
+      "adresse": "Place du 11 Novembre 1918",
+      "numero": 1,
+      "ville": "LYON",
+      "code_postal": 69008,
+      "bornes": [
+        {
+          "id": 11,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 12,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 13,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 14,
+          "etatBorne": 1,
+          "vehicule": null
+        },
+        {
+          "id": 15,
+          "etatBorne": 1,
+          "vehicule": null
+        }
+      ]
+    }
+  ],
+  "reservation": [],
+  "clients": [
+    {
+      "nom": "TRUONG",
+      "prenom": "VINH",
+      "date_naissance": "2021-05-18T22:00:00.000Z",
+      "login": "vinhphuctr",
+      "mdp": "aaaaaaaa",
+      "id": 1
+    }
+  ]
+}
