@@ -1,3 +1,5 @@
+import { Reservation } from "./reservation";
+import { Utiliser } from "./utiliser";
 
 export class Client {
   id: number;
@@ -6,14 +8,13 @@ export class Client {
   date_naissance: Date;
   login: string;
   mdp: string;
+  reservations: Reservation[];
+  utilisations: Utiliser[];
 
   // getter
-  public getId(): number { return this.id };
   public toString(): string {
     return this.nom + ' ' + this.prenom;
   }
-  public getDateNaiss(): Date { return this.date_naissance };
-  public getLogin(): string { return this.login };
 
   // setter
   public setNom(_nom: string): void {

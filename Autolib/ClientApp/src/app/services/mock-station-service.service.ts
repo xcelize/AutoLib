@@ -10,22 +10,20 @@ export class MockStationServiceService {
   constructor(private _http: HttpClient) {
   }
 
-  mock_api_stations = 'http://localhost:44333/stations';
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
   getAllStations(): Observable<Station[]> {
-    return this._http.get<Station[]>(this.mock_api_stations);
+    return this._http.get<Station[]>("/stations");
   }
 
   getStation(id: number): Observable<Station> {
-    return this._http.get<Station>(this.mock_api_stations + "/" + id);
+    return this._http.get<Station>("stations/" + id);
   }
 
   updateStation(station: Station): Observable<Station>{
-    return this._http.put<Station>(this.mock_api_stations + "/" + station.id, station);
+    return this._http.put<Station>("stations/" + station.id, station, this.httpOptions);
   }
  
 }

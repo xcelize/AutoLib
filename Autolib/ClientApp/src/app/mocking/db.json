@@ -23,7 +23,9 @@
               "id": 2,
               "categorie": "Petite citadine",
               "type_vehicule": "Toyota Aygo"
-            }
+            },
+            "reservations": [],
+            "utilisations": []
           }
         },
         {
@@ -40,7 +42,9 @@
               "id": 2,
               "categorie": "Petite citadine",
               "type_vehicule": "Toyota Aygo"
-            }
+            },
+            "reservations": [],
+            "utilisations": []
           }
         },
         {
@@ -78,7 +82,9 @@
               "id": 2,
               "categorie": "Petite citadine",
               "type_vehicule": "Toyota Aygo"
-            }
+            },
+            "reservations": [],
+            "utilisations": []
           }
         },
         {
@@ -95,7 +101,9 @@
               "id": 2,
               "categorie": "Petite citadine",
               "type_vehicule": "Toyota Aygo"
-            }
+            },
+            "reservations": [],
+            "utilisations": []
           }
         },
         {
@@ -112,7 +120,9 @@
               "id": 3,
               "categorie": "Utilitaire",
               "type_vehicule": "Citroën Berlingo"
-            }
+            },
+            "reservations": [],
+            "utilisations": []
           }
         },
         {
@@ -168,5 +178,7 @@
         }
       ]
     }
-  ]
+  ],
+  "reservation": [],
+  "clients": []
 }

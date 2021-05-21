@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors, FormGroupDirective, NgForm, Form } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { Client } from '../models/client';
+import { MockClientServiceService } from '../services/mock-client-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogInscriptionValideComponent } from '../dialog-inscription-valide/dialog-inscription-valide.component';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { first } from 'rxjs/operators';
 
 class CrossFieldErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl, form: FormGroupDirective | NgForm): boolean {
@@ -24,22 +30,31 @@ export class InscriptionComponent implements OnInit {
   errorMatcher = new CrossFieldErrorMatcher();
   newClient: Client = new Client();
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private clientService: MockClientServiceService,
+    private dialog: MatDialog,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.inscriptionForm = this.fb.group({
       nom: ['', [Validators.required]],
       prenom: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      id: ['', [Validators.required, Validators.minLength(this.minLen)]],
+      login: ['', [Validators.required, Validators.minLength(this.minLen)]],
       mdp: ['', [Validators.required, Validators.minLength(this.minLen)]],
       confirmMdp: ['', [Validators.required]]
     },
-      { validators: this.passwordMatchValidator }
+      {
+        validators: [
+          this.passwordMatchValidator
+        ]
+      }
     );
   }
 
   ngOnInit() {
   }
-
 
   passwordMatchValidator(g: FormGroup) {
     const mdp = g.get('mdp').value;
@@ -61,17 +76,30 @@ export class InscriptionComponent implements OnInit {
   getNom(): string { return this.inscriptionForm.get('nom').value; }
   getPrenom(): string { return this.inscriptionForm.get('prenom').value; }
   getDateNaiss(): Date { return this.inscriptionForm.get('date').value; }
-  getLogin(): string { return this.inscriptionForm.get('id').value; }
+  getLogin(): string { return this.inscriptionForm.get('login').value; }
   getMdp(): string { return this.inscriptionForm.get('mdp').value; }
 
 
   onSubmit() {
-    this.newClient.nom = this.getNom();
-    this.newClient.prenom = this.getPrenom();
+    this.newClient.nom = this.getNom().toUpperCase();
+    this.newClient.prenom = this.getPrenom().toUpperCase();
     this.newClient.date_naissance = this.getDateNaiss();
     this.newClient.login = this.getLogin();
     this.newClient.mdp = this.getMdp();
-    console.log(this.newClient);
+    this.clientService.addClient(this.newClient).subscribe(
+      data => console.log(data)
+    );
+    this.openDialog(this.newClient);
+  }
+
+  openDialog(newClient: Client) {
+    this.dialog.open(DialogInscriptionValideComponent,
+      {
+        data: newClient,
+        disableClose: true
+      }
+    );
+
   }
 
 }

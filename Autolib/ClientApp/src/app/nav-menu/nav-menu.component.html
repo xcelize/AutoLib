@@ -23,26 +23,48 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-light" [routerLink]="['/proximite']" mat-button>Station à proximité</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!authService.isLoggedIn()">
             <a class="nav-link text-light" [routerLink]="['/inscription']" mat-button>Inscription</a>
           </li>
-          <li class="nav-item">
-            <mat-form-field appearance="outline">
-              <mat-label>Login</mat-label>
-              <input matInput autocomplete="off" />
-            </mat-form-field>
+          <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+            <form [formGroup]="connexionForm">
+              <mat-form-field appearance="outline">
+                <mat-label>Identifiant</mat-label>
+                <input matInput autocomplete="off"
+                       formControlName="identifiant"
+                       required />
+                <mat-error *ngIf="isRequired('identifiant')">Identifiant obligatoire</mat-error>
+              </mat-form-field>
+            </form>
           </li>
-          <li class="nav-item">
-            <mat-form-field appearance="outline">
-              <mat-label>Mot de passe</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </mat-form-field>
+          <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+            <form [formGroup]="connexionForm">
+              <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput
+                       [type]="hide ? 'password' : 'text'"
+                       formControlName="mdp"
+                       required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="isRequired('mdp')">Mot de passe obligatoire</mat-error>
+              </mat-form-field>
+            </form>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" mat-raised-button>Connexion</a>
+          <li class="nav-item" *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['link-active']">
+            <form [formGroup]="connexionForm">
+              <a class="nav-link text-dark" mat-raised-button (click)="onSubmit()">Connexion</a>
+            </form>
+          </li>
+          <li class="nav-item" *ngIf="authService.isLoggedIn()" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" [routerLink]="['/compte']" mat-button>Mon compte</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.isLoggedIn()" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-danger" (click)="authService.logOut()" mat-button >Me déconnecter</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.isLoggedIn()">
+            <a class="nav-link text-light" mat-button>{{ sayHello(moment) }}, </a>
           </li>
         </ul>
       </div>

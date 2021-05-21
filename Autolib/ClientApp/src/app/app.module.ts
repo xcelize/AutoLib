@@ -30,6 +30,11 @@ import { DialogueComponent } from './dialogue/dialogue.component';
 import { ConfirmReservationComponent } from './confirm-reservation/confirm-reservation.component';
 import { DialogResaOkComponent } from './dialog-resa-ok/dialog-resa-ok.component';
 import { MatNativeDateModule } from '@angular/material';
+import { DialogInscriptionValideComponent } from './dialog-inscription-valide/dialog-inscription-valide.component';
+import { AuthInterceptor } from './auth/authconfig.interceptor';
+import { AuthGuard } from './auth/auth.guard';
+import { environment } from '../environments/environment';
+import { DialogGuardComponent } from './dialog-guard/dialog-guard.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,9 @@ import { MatNativeDateModule } from '@angular/material';
     ProximiteComponent,
     DialogueComponent,
     ConfirmReservationComponent,
-    DialogResaOkComponent
+    DialogResaOkComponent,
+    DialogInscriptionValideComponent,
+    DialogGuardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,8 +63,8 @@ import { MatNativeDateModule } from '@angular/material';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'inscription', component: InscriptionComponent },
       { path: 'proximite', component: ProximiteComponent },
-      { path: 'compte:/id', component: CompteComponent },
-      { path: 'reservation/stations/:id', component: ReservationComponent }
+      { path: 'reservation/stations/:id', component: ReservationComponent },
+      { path: 'clients:/id', component: CompteComponent },
     ]),
     BrowserAnimationsModule,
     MatIconModule,
@@ -73,12 +80,20 @@ import { MatNativeDateModule } from '@angular/material';
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    { provide: "BASE_API_URL", useValue: environment.api_url_base }
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogueComponent,
     ConfirmReservationComponent,
-    DialogResaOkComponent
+    DialogResaOkComponent,
+    DialogInscriptionValideComponent,
+    DialogGuardComponent
   ],
   
 })

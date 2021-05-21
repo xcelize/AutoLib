@@ -43,7 +43,8 @@ export class CarteComponent implements OnInit {
         console.log(data);
       },
       (error) => {
-        console.error('request failed with error')
+        console.error('request failed with error');
+        console.log(error);
         this.errorMessage = error;
         this.loading = false;
       },

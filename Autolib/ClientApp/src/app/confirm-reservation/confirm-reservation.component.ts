@@ -40,7 +40,7 @@ export class ConfirmReservationComponent implements OnInit {
       },
     );
     dialogOk.afterClosed().subscribe(data =>
-      this.updateStation(this.data.borne.id),
+      this.updateStation(),
     )
   }
 
@@ -66,21 +66,20 @@ export class ConfirmReservationComponent implements OnInit {
   }
 
   //TODO
-  updateStation(idBorne: number): void {
+  updateStation(): void {
     this._stationService.getStation(this.data.idStation).subscribe(
       station => {
         this.station = this.updateStatutVehicule(station),
-        this._stationService.updateStation(this.station).subscribe(
+          this._stationService.updateStation(this.station).subscribe(
           data => console.log(data))
       })
   }
 
   updateStatutVehicule(station: Station): Station {
-    let _station = station;
-    let _borne = this.data.borne;
-    let index = _station.bornes.indexOf(_borne);
+    let _borne: Borne = this.data.borne;
+    let index = station.bornes.indexOf(_borne);
     _borne.vehicule.disponibilite = 'RESERVEE';
-    _station.bornes[index] = _borne;
-    return _station;
+    station.bornes[index] = _borne;
+    return station;
   }
 }

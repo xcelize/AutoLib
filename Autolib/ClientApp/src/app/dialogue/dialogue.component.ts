@@ -1,7 +1,10 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { DialogGuardComponent } from '../dialog-guard/dialog-guard.component';
 import { Vehicule } from '../models/vehicule';
+import { AuthService } from '../services/auth.service';
 import { MockStationServiceService } from '../services/mock-station-service.service';
 
 
@@ -17,7 +20,10 @@ export class DialogueComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
-    private _mockStationService: MockStationServiceService
+    private _mockStationService: MockStationServiceService,
+    private authSevice: AuthService,
+    private router: Router,
+    private dialogGuard: MatDialog
   ) { }
 
   ngOnInit() {
@@ -39,13 +45,13 @@ export class DialogueComponent implements OnInit {
   }
 
   public totalBornesReservees(): number {
-    let reserve = 0;
+    let reservee = 0;
     for (let borne of this.data.bornes) {
       if (borne.etatBorne == 0) {
-        if (borne.vehicule.disponibilite != 'LIBRE') reserve++;
+        if (borne.vehicule.disponibilite == 'RESERVEE') reservee++;
       }
     }
-    return reserve;
+    return reservee;
   }
 
   public totalBornesVides(): number {
@@ -82,6 +88,15 @@ export class DialogueComponent implements OnInit {
     else {
       this.showBtnReserver = true;
       this.showInfo = false;
+    }
+  }
+
+  onClick(): void {
+    if (this.authSevice.isLoggedIn()) {
+      this.router.navigate(['/reservation/stations' + this.data.id]);
+    } else {
+      this.dialogGuard.open(DialogGuardComponent, { disableClose: true });
+
     }
   }
 

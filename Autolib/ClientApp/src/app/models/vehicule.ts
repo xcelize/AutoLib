@@ -1,4 +1,6 @@
+import { Reservation } from "./reservation";
 import { TypeVehicule } from "./type-vehicule";
+import { Utiliser } from "./utiliser";
 
 export class Vehicule {
   id: number;
@@ -8,9 +10,16 @@ export class Vehicule {
   latitude: number;
   longitude: number;
   typeVehicule: TypeVehicule;
+  reservations: Reservation[];
+  utilisations: Utiliser[];
 
   public isUsed(used: boolean): void {
-    if (used) this.disponibilite = 'OCCUPE'
+    if (used) this.disponibilite = 'UTILISE'
     else this.disponibilite = 'LIBRE';
+  }
+
+  public isBooked(booked: boolean): void {
+    if (booked) this.disponibilite = 'RESERVEE'
+    else this.disponibilite = 'LIBRE'
   }
 }
