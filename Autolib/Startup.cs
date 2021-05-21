@@ -6,7 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-
+using Autolib.Helpers;
+using Autolib.Modeles.DAO;
 
 namespace Autolib
 {
@@ -31,6 +32,9 @@ namespace Autolib
                     options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
                     ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")))
             );
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            services.AddScoped<IUserService, UserService>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -81,6 +85,8 @@ namespace Autolib
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            app.UseMiddleware<JwtMiddleware>();
         }
     }
 }

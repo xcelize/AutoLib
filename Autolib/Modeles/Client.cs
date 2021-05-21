@@ -18,6 +18,9 @@ namespace Autolib
         public string Prenom { get; set; }
         public DateTime? DateNaissance { get; set; }
 
+        public string Login { get; set; }
+        public string Password { get; set; }
+
         public virtual ICollection<Reservation> Reservations { get; set; }
         public virtual ICollection<Utilise> Utilises { get; set; }
     }

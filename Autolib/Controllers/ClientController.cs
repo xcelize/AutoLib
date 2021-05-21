@@ -1,4 +1,7 @@
 ﻿
+using Autolib.Helpers;
+using Autolib.Modeles;
+using Autolib.Modeles.DAO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,39 +15,47 @@ namespace Autolib.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class ClientController : ControllerBase
-    {  
+    { 
+        private IUserService _userService;
 
-        private autolibContext context = new autolibContext();
-        // GET: api/<ClientController>
-        [HttpGet]
-        public IEnumerable<Client> Get()
+        public ClientController(IUserService userService)
         {
-            return context.Clients.ToList();
+            _userService = userService;
         }
 
-        // GET api/<ClientController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ClientController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Authenticate(AuthenticateRequest model)
         {
+            var response = _userService.Authenticate(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
         }
 
-        // PUT api/<ClientController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+         [HttpPost]
+        public async Task<IActionResult> Inscription([FromBody] Client c)
         {
+            Client client = await createClient(c);
+            if (client == null)
+            {
+                return NotFound();
+            }
+            return Ok(client);
         }
 
-        // DELETE api/<ClientController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        private Task<Client> createClient(Client client)
         {
+            throw new NotImplementedException();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var users = _userService.GetAll();
+            return Ok(users);
         }
     }
 }
