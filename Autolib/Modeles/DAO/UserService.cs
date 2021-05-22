@@ -17,7 +17,7 @@ namespace Autolib.Modeles.DAO
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<ClientEntity> GetAll();
         ClientEntity GetById(int id);
-        Client createClient(Client client);
+        Task<Client> createClient(Client client);
     }
     public class UserService : IUserService
     {
