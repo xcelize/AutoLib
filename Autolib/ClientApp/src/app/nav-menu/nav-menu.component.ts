@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Client } from '../models/client';
 import { ConnexionService } from '../services/connexion.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class NavMenuComponent {
   hide = true;
   connexionForm: FormGroup;
   moment: number = new Date().getHours();
+  currentUser: Client;
 
   constructor(
     private fb: FormBuilder,
@@ -25,15 +27,14 @@ export class NavMenuComponent {
       mdp: ['', [Validators.required]]
     });
 
+    this.currentUser = this._connService.getCurrentUser();
+
   };
 
   isRequired(attr: string): boolean {
     if (this.connexionForm.get(attr).hasError('required')) return true;
     else return false;
   }
-
-  currentUser = this._connService.getCurrentUser();
-
 
   get currentUserId() {
     return this.currentUser.id;
