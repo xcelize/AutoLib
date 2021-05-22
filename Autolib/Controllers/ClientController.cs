@@ -33,10 +33,9 @@ namespace Autolib.Controllers
 
             return Ok(response);
         }
-        
-        /*
-         [HttpPost]
-        public async Task<IActionResult> Inscription([FromBody] Client c)
+
+         //[HttpPost]
+        /*public async Task<IActionResult> Inscription([FromBody] Client c)
         {
             Client client = await createClient(c);
             if (client == null)
@@ -44,8 +43,7 @@ namespace Autolib.Controllers
                 return NotFound();
             }
             return Ok(client);
-        }
-        */
+        }*/
 
         private Task<Client> createClient(Client client)
         {
