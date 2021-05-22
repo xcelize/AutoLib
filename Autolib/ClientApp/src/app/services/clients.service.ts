@@ -48,7 +48,9 @@ export class ClientsService {
   }
 
   clearUser() {
-    localStorage.clear();
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+    localStorage.removeItem('expire_at');
   }
 
   getToken() {

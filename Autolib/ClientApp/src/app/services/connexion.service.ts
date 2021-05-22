@@ -58,7 +58,7 @@ export class ConnexionService implements CanActivate {
               res.dateNaissance, res.login,
               res.token, res.reservations,
             );
-            alert("Connexion réussi");
+            window.location.reload();
           }
           else {
             alert("Connexion échoué: le mot de passe ou l'identifiant est incorrect");
@@ -102,6 +102,7 @@ export class ConnexionService implements CanActivate {
   logout() {
     this._clientService.clearUser();
     this.router.navigate(['/']);
+    window.location.reload();
   }
 
 
