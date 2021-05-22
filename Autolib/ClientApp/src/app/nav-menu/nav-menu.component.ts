@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { AuthService } from '../services/auth.service';
+import { ConnexionService } from '../services/connexion.service';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  styleUrls: ['./nav-menu.component.css'],
+  providers: [ConnexionService]
 })
 export class NavMenuComponent {
   isExpanded = false;
@@ -17,19 +17,28 @@ export class NavMenuComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _connService: ConnexionService
   ) {
     this.connexionForm = this.fb.group({
       identifiant: ['', [Validators.required]],
       mdp: ['', [Validators.required]]
     });
+
   };
 
   isRequired(attr: string): boolean {
     if (this.connexionForm.get(attr).hasError('required')) return true;
     else return false;
   }
+
+  currentUser = this._connService.getCurrentUser();
+
+
+  get currentUserId() {
+    return this.currentUser.id;
+  }
+
 
   collapse() {
     this.isExpanded = false;
@@ -44,9 +53,12 @@ export class NavMenuComponent {
     else return "Bonsoir"
   }
 
-
   onSubmit() {
-    this.authService.logIn(this.connexionForm.get('identifiant').value, this.connexionForm.get('mdp').value)
-      .pipe(first());
+    this._connService.connexion(this.connexionForm);
+    console.log("Utilisateur connecté: ", this.currentUser);
+  }
+
+  logout() {
+    return this._connService.logout();
   }
 }

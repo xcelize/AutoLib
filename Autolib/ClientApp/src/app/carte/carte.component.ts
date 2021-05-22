@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Station } from '../models/station';
-import { MockStationServiceService } from '../services/mock-station-service.service';
+import { StationsService } from '../services/stations.service';
 import * as L from 'leaflet';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogueComponent } from '../dialogue/dialogue.component';
@@ -24,7 +24,7 @@ export class CarteComponent implements OnInit {
 
 
   constructor(
-    private _mockStationService: MockStationServiceService,
+    private _stationService: StationsService,
     public dialogue: MatDialog
   ) {}
 
@@ -36,7 +36,7 @@ export class CarteComponent implements OnInit {
 
   getStations(): void {
     this.loading = true;
-    this._mockStationService.getAllStations().subscribe(
+    this._stationService.getAllStations().subscribe(
       (data) => {
         console.log('stations received');
         this.addSiteOnMap(data);

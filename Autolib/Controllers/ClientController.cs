@@ -33,7 +33,8 @@ namespace Autolib.Controllers
 
             return Ok(response);
         }
-
+        
+        /*
          [HttpPost]
         public async Task<IActionResult> Inscription([FromBody] Client c)
         {
@@ -44,6 +45,7 @@ namespace Autolib.Controllers
             }
             return Ok(client);
         }
+        */
 
         private Task<Client> createClient(Client client)
         {

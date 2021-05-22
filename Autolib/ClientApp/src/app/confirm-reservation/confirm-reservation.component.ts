@@ -5,7 +5,7 @@ import { Borne } from '../models/borne';
 import { Station } from '../models/station';
 import { BoutonsService } from '../services/boutons.service';
 import { ImageService } from '../services/image.service';
-import { MockStationServiceService } from '../services/mock-station-service.service';
+import { StationsService } from '../services/stations.service';
 
 @Component({
   selector: 'app-confirm-reservation',
@@ -20,7 +20,7 @@ export class ConfirmReservationComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     private _imageService: ImageService,
     private _dialogueOK: MatDialog,
-    private _stationService: MockStationServiceService,
+    private _stationService: StationsService,
     private _boutonsService: BoutonsService
   ) {}
 

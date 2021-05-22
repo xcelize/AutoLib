@@ -7,7 +7,7 @@ export class Client {
   prenom: string;
   date_naissance: Date;
   login: string;
-  mdp: string;
+  password: string;
   reservations: Reservation[];
   utilisations: Utiliser[];
 

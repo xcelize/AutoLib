@@ -35,6 +35,7 @@ import { AuthInterceptor } from './auth/authconfig.interceptor';
 import { AuthGuard } from './auth/auth.guard';
 import { environment } from '../environments/environment';
 import { DialogGuardComponent } from './dialog-guard/dialog-guard.component';
+import { ConnexionService } from './services/connexion.service';
 
 @NgModule({
   declarations: [
@@ -63,8 +64,8 @@ import { DialogGuardComponent } from './dialog-guard/dialog-guard.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'inscription', component: InscriptionComponent },
       { path: 'proximite', component: ProximiteComponent },
-      { path: 'reservation/stations/:id', component: ReservationComponent },
-      { path: 'clients:/id', component: CompteComponent },
+      { path: 'reservation/stations/:id', component: ReservationComponent, canActivate: [ConnexionService] },
+      { path: 'moncompte/:id', component: CompteComponent, canActivate: [ConnexionService] },
     ]),
     BrowserAnimationsModule,
     MatIconModule,
@@ -85,7 +86,7 @@ import { DialogGuardComponent } from './dialog-guard/dialog-guard.component';
       useClass: AuthInterceptor,
       multi: true
     },
-    { provide: "BASE_API_URL", useValue: environment.api_url_base }
+    { provide: "BASE_URL", useValue: environment.api_url_base }
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -1,13 +1,13 @@
 import { Borne } from "./borne";
 
 export class Station {
-  id: number;
+  idStation: number;
   latitude: number;
   longitude: number;
   adresse: string;
   numero: number;
   ville: string;
-  code_postal: number;
+  codePostal: number;
   bornes: Borne[];
 
   public totalBornes(): number {
@@ -33,7 +33,7 @@ export class Station {
   public getAdresse(): string {
     return this.numero.toString() + " " +
            this.adresse + ", " +
-           this.code_postal.toString() + " " + this.ville; 
+           this.codePostal.toString() + " " + this.ville; 
   }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnexionService } from '../services/connexion.service';
 
 @Component({
   selector: 'app-compte',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _connService: ConnexionService) {}
+
+  currentUser = this._connService.getCurrentUser();
+
 
   ngOnInit() {
   }

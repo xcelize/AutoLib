@@ -23,7 +23,7 @@ export class MockStationServiceService {
   }
 
   updateStation(station: Station): Observable<Station>{
-    return this._http.put<Station>("stations/" + station.id, station, this.httpOptions);
+    return this._http.put<Station>("stations/" + station.idStation, station, this.httpOptions);
   }
  
 }

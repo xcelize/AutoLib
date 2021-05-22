@@ -7,7 +7,7 @@ import { Station } from '../models/station';
 import { Vehicule } from '../models/vehicule';
 import { BoutonsService } from '../services/boutons.service';
 import { ImageService } from '../services/image.service';
-import { MockStationServiceService } from '../services/mock-station-service.service';
+import { StationsService } from '../services/stations.service';
 
 @Component({
   selector: 'app-reservation',
@@ -22,7 +22,7 @@ export class ReservationComponent implements OnInit {
   _resa: boolean = false;
 
   constructor(
-    private _mockStationService: MockStationServiceService,
+    private _stationService: StationsService,
     private _route: ActivatedRoute,
     private _dialogue: MatDialog,
     private _imageService: ImageService,
@@ -32,7 +32,7 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit() {
     this.idStation = +this._route.snapshot.paramMap.get('id');
-    this._mockStationService.getStation(this.idStation).subscribe(
+    this._stationService.getStation(this.idStation).subscribe(
       station => {
         this.bornesDispo = this.getBornesDispo(station);
         console.log(this.bornesDispo);

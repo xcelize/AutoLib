@@ -23,10 +23,10 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-light" [routerLink]="['/proximite']" mat-button>Station à proximité</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!authService.isLoggedIn()">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!_connService.isLoggedIn()">
             <a class="nav-link text-light" [routerLink]="['/inscription']" mat-button>Inscription</a>
           </li>
-          <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+          <li class="nav-item" *ngIf="!_connService.isLoggedIn()">
             <form [formGroup]="connexionForm">
               <mat-form-field appearance="outline">
                 <mat-label>Identifiant</mat-label>
@@ -37,7 +37,7 @@
               </mat-form-field>
             </form>
           </li>
-          <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+          <li class="nav-item" *ngIf="!_connService.isLoggedIn()">
             <form [formGroup]="connexionForm">
               <mat-form-field appearance="outline">
                 <mat-label>Mot de passe</mat-label>
@@ -52,19 +52,19 @@
               </mat-form-field>
             </form>
           </li>
-          <li class="nav-item" *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['link-active']">
+          <li class="nav-item" *ngIf="!_connService.isLoggedIn()" [routerLinkActive]="['link-active']">
             <form [formGroup]="connexionForm">
               <a class="nav-link text-dark" mat-raised-button (click)="onSubmit()">Connexion</a>
             </form>
           </li>
-          <li class="nav-item" *ngIf="authService.isLoggedIn()" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" [routerLink]="['/compte']" mat-button>Mon compte</a>
+          <li class="nav-item" *ngIf="_connService.isLoggedIn()" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" [routerLink]="['/moncompte', 'currentUserId()']" mat-button>Mon compte</a>
           </li>
-          <li class="nav-item" *ngIf="authService.isLoggedIn()" [routerLinkActive]="['link-active']">
-          <a class="nav-link text-danger" (click)="authService.logOut()" mat-button >Me déconnecter</a>
+          <li class="nav-item" *ngIf="_connService.isLoggedIn()" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-danger" (click)="logout()" mat-button >Me déconnecter</a>
           </li>
-          <li class="nav-item" *ngIf="authService.isLoggedIn()">
-            <a class="nav-link text-light" mat-button>{{ sayHello(moment) }}, </a>
+          <li class="nav-item" *ngIf="_connService.isLoggedIn()">
+            <a class="nav-link text-light" mat-button>{{ sayHello(moment) }}, {{ currentUser.prenom }}</a>
           </li>
         </ul>
       </div>

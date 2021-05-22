@@ -4,8 +4,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogGuardComponent } from '../dialog-guard/dialog-guard.component';
 import { Vehicule } from '../models/vehicule';
-import { AuthService } from '../services/auth.service';
-import { MockStationServiceService } from '../services/mock-station-service.service';
+import { ConnexionService } from '../services/connexion.service';
+import { StationsService } from '../services/stations.service';
 
 
 @Component({
@@ -20,10 +20,10 @@ export class DialogueComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
-    private _mockStationService: MockStationServiceService,
-    private authSevice: AuthService,
+    private _stationService: StationsService,
     private router: Router,
-    private dialogGuard: MatDialog
+    private dialogGuard: MatDialog,
+    private _connService: ConnexionService
   ) { }
 
   ngOnInit() {
@@ -92,7 +92,7 @@ export class DialogueComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.authSevice.isLoggedIn()) {
+    if (this._connService.isLoggedIn()) {
       this.router.navigate(['/reservation/stations' + this.data.id]);
     } else {
       this.dialogGuard.open(DialogGuardComponent, { disableClose: true });

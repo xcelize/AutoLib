@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors, FormGroupDirective, NgForm, Form } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { Client } from '../models/client';
-import { MockClientServiceService } from '../services/mock-client-service.service';
+import { ClientsService } from '../services/clients.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogInscriptionValideComponent } from '../dialog-inscription-valide/dialog-inscription-valide.component';
 import { Router } from '@angular/router';
@@ -32,7 +32,7 @@ export class InscriptionComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private clientService: MockClientServiceService,
+    private clientService: ClientsService,
     private dialog: MatDialog,
     private router: Router,
     private authService: AuthService
@@ -85,10 +85,12 @@ export class InscriptionComponent implements OnInit {
     this.newClient.prenom = this.getPrenom().toUpperCase();
     this.newClient.date_naissance = this.getDateNaiss();
     this.newClient.login = this.getLogin();
-    this.newClient.mdp = this.getMdp();
-    this.clientService.addClient(this.newClient).subscribe(
+    this.newClient.password = this.getMdp();
+
+    /*this.clientService.addClient(this.newClient).subscribe(
       data => console.log(data)
-    );
+    );*/
+
     this.openDialog(this.newClient);
   }
 
