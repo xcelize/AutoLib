@@ -63,6 +63,7 @@ export class CarteComponent implements OnInit {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.mymap);
+    //L.control.locate().addTo(this.mymap);
   }
 
   addSiteOnMap(stations: Station[]): void {
