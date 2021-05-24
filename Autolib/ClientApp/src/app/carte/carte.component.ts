@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Station } from '../models/station';
+import { Vehicule } from '../models/vehicule';
 import { StationsService } from '../services/stations.service';
 import * as L from 'leaflet';
 import { MatDialog } from '@angular/material/dialog';
