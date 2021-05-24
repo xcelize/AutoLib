@@ -1,0 +1,59 @@
+.body-compte {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.historique {
+    margin-bottom: 10px;
+}
+
+.titre-historique {
+    height: 30px;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.boutons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.modif-btns {
+    margin: 0 10px 0 10px;
+}
+
+.modification {
+    margin-top: 20px;
+}
+
+.nom-prenom-date {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.valider {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 1000px) {
+  .nom-prenom-date {
+    flex-direction: column;
+    justify-content: center;
+    height: unset;
+  }
+
+  #nom, #prenom {
+      margin-bottom: 10px;
+  }
+
+  .valider {
+      justify-content: flex-end;
+      margin-top: unset;
+  }
+}

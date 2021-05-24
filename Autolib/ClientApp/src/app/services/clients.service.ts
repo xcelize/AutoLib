@@ -28,6 +28,13 @@ export class ClientsService {
     return this._http.delete("api/client/" + id);
   }*/
 
+  getClient(idClient: number) {
+  }
+
+  updateClient(client: Client) {
+
+  }
+
   setUser(
     id: string, nom: string, prenom: string,
     dateNaissance: string, identifant: string, 

@@ -1,4 +1,97 @@
-<p>compte works!</p>
-{{ currentUser.id }}
-{{ currentUser.nom }}
-{{ currentUser.prenom }}
+<div class="body-compte">
+  <div class="titre">
+    <h2>Mon compte</h2>
+  </div>
+  <div class="historique">
+    <div class="titre-historique">
+      <h6>HISTORIQUE</h6>
+    </div>
+    <div>
+      <span *ngIf="empty">Vous n'avez réservé aucune voiture !</span>
+      <table mat-table [dataSource]="currentUser.reservations" class="mat-elevation-z8" *ngIf="!empty">
+        <!-- Colonne Date -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date_resa }}</td>
+        </ng-container>
+
+        <!-- Colonne Nom Véhicule -->
+        <ng-container matColumnDef="vehicule">
+          <th mat-header-cell *matHeaderCellDef>Véhicule</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="nom-et-img">
+              {{ element.vehicule.typeVehicule.type_vehicule }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Colonne Catégorie Véhicule -->
+        <ng-container matColumnDef="categorie">
+          <th mat-header-cell *matHeaderCellDef>Catégorie</th>
+          <td mat-cell *matCellDef="let element">{{ element.vehicule.typeVehicule.categorie }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colonnes"></tr>
+        <tr mat-row *matRowDef="let row; columns: colonnes;"></tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="boutons">
+    <button mat-raised-button class="btn-with-hover modif-btns"
+            (click)="clickOnModifier()">
+      Modifier mon compte
+    </button>
+    <button mat-raised-button class="btn-annuler-with-hover modif-btns"
+            (click)="clickOnSupprimer()">
+      Supprimer mon compte
+    </button>
+  </div>
+
+  <div class="modification" *ngIf="modifier">
+    <form [formGroup]="modifForm" (ngSubmit)="onSubmit()">
+      <div class="nom-prenom-date">
+        <mat-form-field appearance="outline" id="nom">
+          <mat-label>Nom</mat-label>
+          <input matInput
+                 autocomplete="off"
+                 formControlName="nom"
+                 required />
+          <mat-hint>En majuscule</mat-hint>
+          <mat-error *ngIf="isRequired('nom')">Nom obligatoire</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="prenom">
+          <mat-label>Prénom</mat-label>
+          <input matInput
+                 autocomplete="off"
+                 formControlName="prenom"
+                 required />
+          <mat-hint>En majuscule</mat-hint>
+          <mat-error *ngIf="isRequired('prenom')">Prénom obligatoire</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="date">
+          <mat-label>Date de naissance (dd/mm/aaaa)</mat-label>
+          <input matInput
+                 #minmaxInput [max]="currentDate"
+                 autocomplete="off"
+                 [matDatepicker]="datepicker"
+                 formControlName="date"
+                 required />
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+          </mat-datepicker>
+          <mat-error *ngIf="isRequired('date')">Date de naissance obligatoire</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="valider">
+      <button mat-raised-button class="btn-with-hover" [disabled]="modifForm.invalid">Valider</button>
+    </div>
+  </div>
+  <div style="text-align: center">
+    ---
+  </div>
+</div>

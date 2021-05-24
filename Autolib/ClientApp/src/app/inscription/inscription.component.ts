@@ -6,8 +6,6 @@ import { ClientsService } from '../services/clients.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogInscriptionValideComponent } from '../dialog-inscription-valide/dialog-inscription-valide.component';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { first } from 'rxjs/operators';
 
 class CrossFieldErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl, form: FormGroupDirective | NgForm): boolean {
@@ -35,7 +33,6 @@ export class InscriptionComponent implements OnInit {
     private clientService: ClientsService,
     private dialog: MatDialog,
     private router: Router,
-    private authService: AuthService
   ) {
     this.inscriptionForm = this.fb.group({
       nom: ['', [Validators.required]],

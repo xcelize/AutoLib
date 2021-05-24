@@ -36,6 +36,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { environment } from '../environments/environment';
 import { DialogGuardComponent } from './dialog-guard/dialog-guard.component';
 import { ConnexionService } from './services/connexion.service';
+import { DialogSpprimerCompteComponent } from './dialog-spprimer-compte/dialog-spprimer-compte.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ConnexionService } from './services/connexion.service';
     ConfirmReservationComponent,
     DialogResaOkComponent,
     DialogInscriptionValideComponent,
-    DialogGuardComponent
+    DialogGuardComponent,
+    DialogSpprimerCompteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -94,7 +96,8 @@ import { ConnexionService } from './services/connexion.service';
     ConfirmReservationComponent,
     DialogResaOkComponent,
     DialogInscriptionValideComponent,
-    DialogGuardComponent
+    DialogGuardComponent,
+    DialogSpprimerCompteComponent
   ],
   
 })

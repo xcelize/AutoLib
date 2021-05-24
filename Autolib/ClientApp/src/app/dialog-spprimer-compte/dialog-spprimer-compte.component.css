@@ -1,0 +1,19 @@
+.text {
+    text-align: center;
+    height: 40px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin: 0 10px 0 10px;
+}
+
+@media (max-width: 1000px) {
+  .btns {
+      margin-top: 20px;
+  }
+}
