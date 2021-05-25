@@ -63,8 +63,8 @@
           <li class="nav-item" *ngIf="_connService.isLoggedIn()" [routerLinkActive]="['link-active']">
           <a class="nav-link text-danger" (click)="logout()" mat-button >Me déconnecter</a>
           </li>
-          <li class="nav-item" *ngIf="currentUser != undefined">
-            <a class="nav-link text-light" mat-button>{{ sayHello(moment) }}, {{ currentUser.prenom }}</a>
+          <li class="nav-item" *ngIf="_connService.isLoggedIn()">
+            <span class="hello">{{ sayHello(moment) }}, {{ currentUser.prenom }}</span>
           </li>
         </ul>
       </div>
